@@ -8,7 +8,7 @@ cap = cv2.VideoCapture(0)
 out = cv2.VideoWriter(
     '/home/pi/scripts/python-streaming-client/output.mp4', -1, 20.0, (640, 480))
 
-while cap.isOpened():
+while(cap.isOpened()):
     ret, frame = cap.read()
     if ret == True:
         frame = cv2.flip(frame, 0)
