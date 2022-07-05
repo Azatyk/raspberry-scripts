@@ -8,7 +8,7 @@ cap = cv2.VideoCapture(0)
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter(
-    '/home/pi/scripts/python-streaming-client/output.mp4', fourcc, 30.0, (640, 480))
+    '/home/pi/scripts/python-streaming-client/output.mp4', fourcc, 20.0, (640, 480))
 
 flag = True
 
