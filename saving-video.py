@@ -21,13 +21,16 @@ def switchFlag():
 timer = Timer(15, switchFlag)
 
 # loop runs if capturing has been initialized.
-while flag:
+while True:
     # reads frames from a camera
     # ret checks return at each frame
     ret, frame = cap.read()
 
     # output the frame
     out.write(frame)
+
+    if not flag:
+        break
 
 
 # Close the window / Release webcam
