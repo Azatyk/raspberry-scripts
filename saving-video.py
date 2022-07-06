@@ -3,7 +3,7 @@ import cv2
 from threading import Timer
 
 # This will return video from the first webcam on your computer.
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
