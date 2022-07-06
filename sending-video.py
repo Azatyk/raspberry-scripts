@@ -1,11 +1,9 @@
-# organize imports
 import cv2
 from threading import Timer
+import requests
 
-# This will return video from the first webcam on your computer.
 cap = cv2.VideoCapture(1)
 
-# Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter(
     '/home/pi/scripts/python-streaming-client/output.mp4', fourcc, 5.0, (640, 480))
@@ -21,24 +19,19 @@ def switchFlag():
 timer = Timer(10, switchFlag)
 timer.start()
 
-# loop runs if capturing has been initialized.
 while True:
-    # reads frames from a camera
-    # ret checks return at each frame
     ret, frame = cap.read()
-
-    # output the frame
     out.write(frame)
 
     if not flag:
         break
 
 
-# Close the window / Release webcam
 cap.release()
-
-# After we release our webcam, we also release the output
 out.release()
-
-# De-allocate any associated memory usage
 cv2.destroyAllWindows()
+
+file = open("./output.mp4", "rb")
+url = ":3000"
+
+response = requests.post(url, data=file, headers={"Content-Type", "application/octet-stream"})
