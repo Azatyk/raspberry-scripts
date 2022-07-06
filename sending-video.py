@@ -6,7 +6,7 @@ cap = cv2.VideoCapture(0)
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter(
-    '/home/pi/scripts/python-streaming-client/output.mp4', fourcc, 5.0, (640, 480))
+    '/home/pi/scripts/python-streaming-client/output.mp4', fourcc, 8.0, (640, 480))
 
 flag = True
 
@@ -32,6 +32,6 @@ out.release()
 cv2.destroyAllWindows()
 
 file = open("./output.mp4", "rb")
-url = ":3000"
+url = "192.168.245.179:3000"
 
 response = requests.post(url, data=file, headers={"Content-Type", "application/octet-stream"})
