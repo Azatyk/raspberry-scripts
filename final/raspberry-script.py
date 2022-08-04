@@ -46,7 +46,10 @@ def on_qr_scanned():
         sio.emit(socketEmits["locket_closed"])
     except:
         sio.emit(socketEmits["locket_opening_error"])
+        print("Fail:")
         print("Failed to open fridge")
+    finally:
+        GPIO.cleanup()
 
 
 @sio.event
