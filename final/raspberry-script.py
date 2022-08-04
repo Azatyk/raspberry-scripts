@@ -14,7 +14,7 @@ import time
 sio = socketio.Client()
 
 # GPIO setting locket pin and pin mode
-locketPin = 5
+locketPin = 3
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(locketPin, GPIO.OUT)
 
@@ -58,5 +58,5 @@ def disconnect():
 
 
 # socket.io connection to server
-sio.connect('http://localhost:3002')
+sio.connect('ws://localhost:3002')
 sio.wait()
