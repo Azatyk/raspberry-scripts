@@ -37,6 +37,7 @@ def connect():
 
 @sio.on(socketEvents["qr_scanned"])
 def on_qr_scanned():
+    print("Start handling qr scan event")
     try:
         GPIO.output(locketPin, True)
         sio.emit(socketEmits["locker_opened"])
