@@ -63,5 +63,5 @@ def setListeners():
 
 # socket.io connection to server
 sio.connect('http://192.168.199.180:3002')
-setListeners()
 sio.wait()
+setListeners()
