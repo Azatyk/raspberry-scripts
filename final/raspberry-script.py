@@ -24,38 +24,44 @@ socketEvents = {
 }
 
 socketEmits = {
-    "locker_opened": "locket_opened",
-    "locket_closed": "locket_closed",
-    "locket_opening_error": "locket_opening_error",
+    "locker_opened": "locker_opened",
+    "locker_closed": "locker_closed",
+    "locker_opening_error": "locker_opening_error",
 }
+
+
+def message(message):
+    print("-------------------")
+    print(message)
+    print("-------------------")
 
 
 @sio.event
 def connect():
-    print('connection established')
+    message("Connected to server")
 
 
 @sio.on(socketEvents["qr_scanned"])
 def on_qr_scanned():
-    print("Start handling qr scan event")
     try:
         GPIO.output(locketPin, True)
         sio.emit(socketEmits["locker_opened"])
+        message("Locker opened")
 
         time.sleep(10)
         GPIO.output(locketPin, False)
-        sio.emit(socketEmits["locket_closed"])
+        sio.emit(socketEmits["locker_closed"])
+        message("Locker closed")
     except:
-        sio.emit(socketEmits["locket_opening_error"])
-        print("Fail:")
-        print("Failed to open fridge")
+        sio.emit(socketEmits["locker_opening_error"])
+        message("Error on opening locker")
 
 
 @sio.event
 def disconnect():
-    print('disconnected from server')
+    message("Disconnected from server")
 
 
 # socket.io connection to server
-sio.connect('http://192.168.35.179:3002')
+sio.connect('http://[server_local_network_id]:3002')
 sio.wait()
