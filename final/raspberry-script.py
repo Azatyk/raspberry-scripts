@@ -55,6 +55,8 @@ def connect():
             sio.emit(socketEmits["locker_opening_error"])
             message("Error on opening locker")
 
+        message("In happpeeeeen")
+
 
 @sio.event
 def disconnect():
