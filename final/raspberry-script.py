@@ -49,8 +49,6 @@ def disconnect():
 # socket.io connection to server
 sio.connect('http://192.168.187.179:3002')
 
-
-@sio.event
 def qr_scanned():
     try:
         GPIO.output(locketPin, True)
@@ -65,5 +63,7 @@ def qr_scanned():
         sio.emit(socketEmits["locker_opening_error"])
         message("Error on opening locker")
 
+
+sio.event("qr_scanned", qr_scanned)
 
 sio.wait()
