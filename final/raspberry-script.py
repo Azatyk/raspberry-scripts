@@ -11,7 +11,7 @@ import socketio
 import RPi.GPIO as GPIO
 import time
 
-sio = socketio.Client()
+sio = socketio.Client(logger=True, engineio_logger=True)
 
 # GPIO setting locket pin and pin mode
 locketPin = 4
