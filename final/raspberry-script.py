@@ -41,7 +41,7 @@ def connect():
     message("Connected to server")
 
 
-@sio.event
+@sio.event(namespace='/qr_scanned')
 def qr_scanned():
     # try:
     GPIO.output(locketPin, True)
