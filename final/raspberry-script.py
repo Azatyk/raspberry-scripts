@@ -36,53 +36,30 @@ def message(message):
     print("-------------------")
 
 
-# @sio.event
-# def connect():
-#     message("Connected to server")
+@sio.event
+def connect():
+    message("Connected to server")
 
 
-# @sio.event(namespace='/qr_scanned')
-# def qr_scanned():
-#     # try:
-#     GPIO.output(locketPin, True)
-#     sio.emit(socketEmits["locker_opened"])
-#     message("Locker opened")
+@sio.event
+def qr_scanned():
+    # try:
+    GPIO.output(locketPin, True)
+    sio.emit(socketEmits["locker_opened"])
+    message("Locker opened")
 
-#     time.sleep(10)
-#     GPIO.output(locketPin, False)
-#     sio.emit(socketEmits["locker_closed"])
-#     message("Locker closed")
-#     # except:
-#     #     sio.emit(socketEmits["locker_opening_error"])
-#     #     message("Error on opening locker")
+    time.sleep(10)
+    GPIO.output(locketPin, False)
+    sio.emit(socketEmits["locker_closed"])
+    message("Locker closed")
+    # except:
+    #     sio.emit(socketEmits["locker_opening_error"])
+    #     message("Error on opening locker")
 
 
-# @sio.event
-# def disconnect():
-#     message("Disconnected from server")
-
-class MyCustomNamespace(socketio.ClientNamespace):
-    def on_connect(self):
-        message("Connected to server")
-
-    def on_disconnect(self):
-            message("Disconnected from server")
-
-    def qr_scanned(self):
-            # try:
-        GPIO.output(locketPin, True)
-        sio.emit(socketEmits["locker_opened"])
-        message("Locker opened")
-
-        time.sleep(10)
-        GPIO.output(locketPin, False)
-        sio.emit(socketEmits["locker_closed"])
-        message("Locker closed")
-        # except:
-        #     sio.emit(socketEmits["locker_opening_error"])
-        #     message("Error on opening locker")
-
-sio.register_namespace(MyCustomNamespace('/'))
+@sio.event
+def disconnect():
+    message("Disconnected from server")
 
 
 # socket.io connection to server
