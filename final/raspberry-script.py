@@ -11,10 +11,10 @@ import socketio
 import RPi.GPIO as GPIO
 import time
 
-sio = socketio.Client(logger=True, engineio_logger=True)
+sio = socketio.Client()
 
 # GPIO setting locket pin and pin mode
-locketPin = 4
+locketPin = 13
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(locketPin, GPIO.OUT)
 
@@ -63,7 +63,5 @@ def disconnect():
 
 
 # socket.io connection to server
-sio.connect('http://192.168.148.179:3002')
-
-
+sio.connect('http://192.168.182.179:3002')
 sio.wait()
