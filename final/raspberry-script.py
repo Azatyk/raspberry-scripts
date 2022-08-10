@@ -63,5 +63,5 @@ def disconnect():
 
 
 # socket.io connection to server
-sio.connect('http://192.168.182.179:3002')
+sio.connect('http://192.168.13.179:3002')
 sio.wait()
