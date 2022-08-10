@@ -34,7 +34,7 @@ cv2.destroyAllWindows()
 
 
 file = open("./output.mp4", "rb")
-url = "http://192.168.215.179:3000"
+url = "http://192.168.77.179:3000"
 
 response = requests.post(url, data=file, headers={
                          "Content-Type": "application/octet-stream"})
